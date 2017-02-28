@@ -33,7 +33,7 @@ var makeCircle = function(cx, cy, r){
     c.setAttribute("cx", cx);
     c.setAttribute("cy", cy);
     c.setAttribute("r", 10);
-    c.setAttribute("fill",  colors[parseInt(cy/20)]);
+    c.setAttribute("fill",  colors[parseInt(cy / 20)]);
     c.setAttribute("stroke", "black");
     pic.appendChild(c);
 }
