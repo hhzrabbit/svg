@@ -24,26 +24,39 @@ var clearPic = function(e){
 
 var intervalID;
 
-var animate = function(){
-//    window.cancelAnimationFrame( requestID );
-    var rInc = 2;
-    var x = width / 2;
-    var y =  height / 2;
+var animate = function(e){
+    end(e);
+    clearPic();
+    circle = newCircle();
+    var rInc = 1;
     var radius = parseInt(circle.getAttribute("r"));
 
     var drawDot = function() {
 	circle.setAttribute("r", radius);
 	radius += rInc;
-	console.log(radius);
-	if (radius < 1 || radius > y){
+	console.log(circle);
+	if (radius < 1 || radius > height / 2){
 	    rInc = - rInc;
 	}
-
-	intervalID = window.setInterval( drawDot, 10 );
     }
-    drawDot();
+    intervalID = window.setInterval( drawDot, 10 );
+}
+
+var end = function(e){
+    window.clearInterval( intervalID );
+}
+
+var newCircle = function(){
+    var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    c.setAttribute("cx", width / 2);
+    c.setAttribute("cy", height / 2);
+    c.setAttribute("r", 0);
+    c.setAttribute("fill",  "blue");
+    c.setAttribute("stroke", "black");
+    pic.appendChild(c);
+    return c;
 }
 
 go.addEventListener("click", animate);
-//stop.addEventListener("click", stopAnimation);
+stop.addEventListener("click", end);
 clear.addEventListener("click", clearPic);
