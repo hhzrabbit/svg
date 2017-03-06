@@ -34,7 +34,6 @@ var animate = function(e){
     var drawDot = function() {
 	circle.setAttribute("r", radius);
 	radius += rInc;
-	console.log(circle);
 	if (radius < 1 || radius > height / 2){
 	    rInc = - rInc;
 	}
